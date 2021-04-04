@@ -1,5 +1,4 @@
 import tushare as ts
-import json
 
 
 class DataRetriever:
