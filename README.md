@@ -5,11 +5,12 @@
 
 clone本仓库
 
-pip3 install -r requirement.txt
-
-python simulator.py
-
+```
+    pip3 install -r requirement.txt
+    python simulator.py
+```
 ---
+##实现功能
 
 Python实现以下简单算法：请获取贵州茅台近三年的日K线，根据日K线计算MACD，
 当MACD金叉时，次日以开盘价全仓买入贵州茅台，当MACD死叉时次日以开盘价全仓卖出。
@@ -20,6 +21,7 @@ Python实现以下简单算法：请获取贵州茅台近三年的日K线，根�
 并画出组合净值曲线。
 
 ---
+##各参数定义
 
 12日EMA的算式为
 EMA（12）=前一日EMA（12）×11/13+今日收盘价×2/13
@@ -36,7 +38,7 @@ MACD金叉：DIF 由下向上突破 DEA，为买入信号
 MACD死叉：DIF 由上向下突破 DEA，为卖出信号
 
 ---
-初始各参数计算方式
+##初始各参数计算方式
 
 第一天：
 
