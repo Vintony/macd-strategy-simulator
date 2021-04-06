@@ -26,7 +26,7 @@ class Trader:
     def trade(self):
         self.init_start_data()
         self.cal_rest_data()
-        for today in self.list_dailyData[3:len(self.list_dailyData) - 2]:
+        for today in self.list_dailyData[3:len(self.list_dailyData) - 1]:
             yesterday = self.list_dailyData[self.list_dailyData.index(today) - 1]
             tomorrow = self.list_dailyData[self.list_dailyData.index(today) + 1]
             today.ratio = self.money / self.start if self.money != 0 else \
@@ -47,6 +47,8 @@ class Trader:
                         self.money += self.hold * 0.998 * tomorrow.open
                         self.hold = 0
 
+        self.list_dailyData[len(self.list_dailyData) - 1].ratio = self.money / self.start if self.money != 0 else \
+            self.hold * self.list_dailyData[len(self.list_dailyData) - 1].close / self.start
         self.create_trade_record_xlsx()
         self.create_ratio_pic()
 
@@ -89,7 +91,7 @@ class Trader:
     def create_ratio_pic(self):
         dates = []
         ratios = []
-        for i in self.list_dailyData[3:len(self.list_dailyData) - 2]:
+        for i in self.list_dailyData[3:len(self.list_dailyData)]:
             dates.append(i.date)
             ratios.append(i.ratio)
         plt.plot(dates, ratios)
