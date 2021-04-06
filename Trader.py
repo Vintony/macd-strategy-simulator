@@ -69,8 +69,8 @@ class Trader:
     def cal_rest_data(self):
         for today in self.list_dailyData[2:]:
             yesterday = self.list_dailyData[self.list_dailyData.index(today) - 1]
-            today.ema12 = yesterday.close * 11 / 13 + today.close * 2 / 13
-            today.ema26 = yesterday.close * 25 / 27 + today.close * 2 / 27
+            today.ema12 = yesterday.ema12 * 11 / 13 + today.close * 2 / 13
+            today.ema26 = yesterday.ema26 * 25 / 27 + today.close * 2 / 27
             today.dif = today.ema12 - today.ema26
             today.dea = yesterday.dea * 8 / 10 + today.dif * 2 / 10
             # 0指dea高于dif 1指dif高于dea 由0->1则指示dif由下向上突破dea 买入 由1->0则指示dif由上向下突破dea 卖出
